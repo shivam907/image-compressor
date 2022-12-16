@@ -5,46 +5,64 @@ const QUALITY = 0.7;
 
 const input = document.getElementById("img-input");
 input.onchange = function (ev) {
+  document.querySelector(".convert").classList.remove("op");
   const file = ev.target.files[0]; // get the file
   const blobURL = URL.createObjectURL(file);
   console.log(blobURL);
-  var downloadLink = document.createElement("a");
-  downloadLink.target = "_blank";
-  downloadLink.download = file.name;
-  downloadLink.href = blobURL;
+  //   var downloadLink = document.createElement("a");
+  //   downloadLink.target = "_blank";
+  //   downloadLink.download = file.name;
+  //   downloadLink.href = blobURL;
 
-  // append the anchor to document body
-  document.body.append(downloadLink);
+  //   // append the anchor to document body
+  //   document.body.append(downloadLink);
 
-  // fire a click event on the anchor
-  downloadLink.click();
+  //   // fire a click event on the anchor
+  //   downloadLink.click();
 
-  //   const img = new Image();
-  //   img.src = blobURL;
-  //   img.onerror = function () {
-  //     URL.revokeObjectURL(this.src);
-  //     // Handle the failure properly
-  //     console.log("Cannot load image");
-  //   };
-  //   img.onload = function () {
-  //     URL.revokeObjectURL(this.src);
-  //     const [newWidth, newHeight] = calculateSize(img, MAX_WIDTH, MAX_HEIGHT);
-  //     const canvas = document.createElement("canvas");
-  //     canvas.width = newWidth;
-  //     canvas.height = newHeight;
-  //     const ctx = canvas.getContext("2d");
-  //     ctx.drawImage(img, 0, 0, newWidth, newHeight);
-  //     canvas.toBlob(
-  //       (blob) => {
-  //         // Handle the compressed image. es. upload or save in local state
-  //         displayInfo("Original file", file);
-  //         displayInfo("Compressed file", blob);
-  //       },
-  //       MIME_TYPE,
-  //       QUALITY
-  //     );
-  //     document.getElementById("root").append(canvas);
-  //   };
+  const img = new Image();
+  img.src = blobURL;
+  img.onerror = function () {
+    URL.revokeObjectURL(this.src);
+    // Handle the failure properly
+    console.log("Cannot load image");
+  };
+  img.onload = function () {
+    URL.revokeObjectURL(this.src);
+    const [newWidth, newHeight] = calculateSize(img, MAX_WIDTH, MAX_HEIGHT);
+    const canvas = document.createElement("canvas");
+    canvas.width = newWidth;
+    canvas.height = newHeight;
+    const ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0, newWidth, newHeight);
+    console.log();
+    const canvasImage = canvas.toDataURL();
+    let xhr = new XMLHttpRequest();
+    xhr.responseType = "blob";
+    xhr.onload = function () {
+      let a = document.createElement("a");
+      a.href = window.URL.createObjectURL(xhr.response);
+      a.download = file.name;
+      a.style.display = "none";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    };
+    xhr.open("GET", canvasImage); // This is to download the canvas Image
+    xhr.send();
+
+    document.querySelector(".convert").classList.add("op");
+    // document.getElementById("root").append(canvas);
+  };
+  // canvas.toBlob(
+  //   (blob) => {
+  //     // Handle the compressed image. es. upload or save in local state
+  //     displayInfo("Original file", file);
+  //     displayInfo("Compressed file", blob);
+  //   },
+  //   MIME_TYPE,
+  //   QUALITY
+  // );
 };
 
 function calculateSize(img, maxWidth, maxHeight) {
@@ -63,7 +81,7 @@ function calculateSize(img, maxWidth, maxHeight) {
       height = maxHeight;
     }
   }
-  return [1000, 1000];
+  return [width, height];
 }
 
 // Utility functions for demo purpose
