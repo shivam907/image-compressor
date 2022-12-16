@@ -1,5 +1,5 @@
-const MAX_WIDTH = 1000;
-const MAX_HEIGHT = 3000;
+const MAX_WIDTH = 500;
+const MAX_HEIGHT = 500;
 const MIME_TYPE = "image/jpeg";
 const QUALITY = 0.7;
 
@@ -63,7 +63,7 @@ function calculateSize(img, maxWidth, maxHeight) {
       height = maxHeight;
     }
   }
-  return [width, height];
+  return [1000, 1000];
 }
 
 // Utility functions for demo purpose
