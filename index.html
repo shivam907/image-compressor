@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Jost:wght@300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Raleway+Dots&family=Rubik:wght@400;500;600;700;800&family=Zen+Dots&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <img class="logo" src="img/makes360.png" alt="" />
+      <ul>
+        <a href="">Home</a>
+        <a href="">Company</a>
+        <a href="">Services</a>
+        <a href="">Industry</a>
+        <a href="">Testimonials</a>
+        <a href="">Portfolio</a>
+        <div class="new">
+          <a href="">Become a Partner</a>
+          <div class="newBox">NEW</div>
+        </div>
+        <a href="">Contact Us</a>
+        <ion-icon name="search-outline"></ion-icon>
+      </ul>
+    </nav>
+    <div class="hero">
+      <div class="content">
+        <div class="cont">
+          <h1>Image Compressor</h1>
+          <p>
+            Free tool for compressing your heavy image file into lighter one
+          </p>
+        </div>
+        <div class="cont2">
+          <a href="">Home</a>
+          <p>/</p>
+          <a href="">Image Compressor</a>
+        </div>
+      </div>
+    </div>
+    <div class="pdfCompressor">
+      <!-- <div id="dropContainer" style="border: 1px solid black; height: 25rem">
+        Drop Here
+      </div> -->
+      <form id="dropFileForm">
+        <input class="ok input" type="file" name="files[]" id="img-input" />
+
+        <label
+          for="fileInput"
+          id="fileLabel"
+          ondragover="overrideDefault(event);fileHover();"
+          ondragenter="overrideDefault(event);fileHover();"
+          ondragleave="overrideDefault(event);fileHoverEnd();"
+          ondrop="overrideDefault(event);fileHoverEnd();
+        addFiles(event);"
+        >
+          <!-- <i class="fa fa-download fa-5x"></i> -->
+          <!-- <br /> -->
+          <span id="fileLabelText"> Choose a file or drag it here </span>
+          <!-- <br /> -->
+          <div class="convert op">
+            <p>Converting</p>
+            <div class="spinner rounded-circle"></div>
+          </div>
+          <!-- <span id="uploadStatus"></span> -->
+        </label>
+
+        <button class="uploadButton" onclick="uploadFiles(event)">
+          Compress
+        </button>
+      </form>
+      <!-- <div id="root">
+        <p>Upload an image and see the result</p>
+        <input
+          id="img-input"
+          type="file"
+          accept="image/*"
+          style="display: block"
+        />
+      </div> -->
+      <!-- <input type="file" name="" id="input" />
+
+      <button class="files">Submit</button> -->
+    </div>
+    <!-- <div class="space"></div> -->
+    <script src="script.js"></script>
+  </body>
+</html>
