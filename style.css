@@ -9,12 +9,12 @@
 nav {
   position: fixed;
   width: 100%;
-  padding: 3rem 3rem;
+  padding: 1.2rem 3rem;
   z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  background-color: #fff;
   transition: 0.5s ease-in-out;
 }
 .logo {
@@ -29,18 +29,28 @@ nav ul {
 }
 nav ul a {
   font-size: 1.4rem;
-  color: #fff;
+  color: #323232;
   text-decoration: none;
   font-weight: 400;
   letter-spacing: 0.1rem;
 }
 .hero {
-  background: url("https://www.makes360.com/images/fes12-1-fin.jpg");
+  background: linear-gradient(
+      45deg,
+      rgb(137, 107, 226, 0.925),
+      rgb(95, 111, 213, 0.925)
+    ),
+    /* background: linear-gradient(
+      45deg,
+      rgb(151, 149, 239, 0.9),
+      rgb(151, 149, 239, 0.9)
+    ), */
+      url("/img/parallax\ \(1\).jpg");
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 30.5rem;
+  height: 32.5rem;
   background-attachment: fixed;
 }
 
