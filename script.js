@@ -9,16 +9,16 @@ input.onchange = function (ev) {
   const file = ev.target.files[0]; // get the file
   const blobURL = URL.createObjectURL(file);
   console.log(blobURL);
-  //   var downloadLink = document.createElement("a");
-  //   downloadLink.target = "_blank";
-  //   downloadLink.download = file.name;
-  //   downloadLink.href = blobURL;
+    // var downloadLink = document.createElement("a");
+    // downloadLink.target = "_blank";
+    // downloadLink.download = file.name;
+    // downloadLink.href = blobURL;
 
-  //   // append the anchor to document body
-  //   document.body.append(downloadLink);
+    // // append the anchor to document body
+    // document.body.append(downloadLink);
 
-  //   // fire a click event on the anchor
-  //   downloadLink.click();
+    // // fire a click event on the anchor
+    // downloadLink.click();
 
   const img = new Image();
   img.src = blobURL;
@@ -41,28 +41,37 @@ input.onchange = function (ev) {
     xhr.responseType = "blob";
     xhr.onload = function () {
       let a = document.createElement("a");
+      let im = document.createElement("img");
+      im.src=window.URL.createObjectURL(xhr.response)
+      // im=img
+      im.style.width=500
+      im.style.height=500
+      document.body.appendChild(im)
       a.href = window.URL.createObjectURL(xhr.response);
       a.download = file.name;
-      a.style.display = "none";
+      a.innerText="Download"
+      console.log(a);
+      // a.style.display = "none";
       document.body.appendChild(a);
-      a.click();
-      a.remove();
+      // a.click();
+      // a.remove();
     };
     xhr.open("GET", canvasImage); // This is to download the canvas Image
     xhr.send();
 
     document.querySelector(".convert").classList.add("op");
     // document.getElementById("root").append(canvas);
+    canvas.toBlob(
+      (blob) => {
+        console.log(blob)
+        // Handle the compressed image. es. upload or save in local state
+        displayInfo("Original file", file);
+        displayInfo("Compressed file", blob);
+      },
+      MIME_TYPE,
+      QUALITY
+    );
   };
-  // canvas.toBlob(
-  //   (blob) => {
-  //     // Handle the compressed image. es. upload or save in local state
-  //     displayInfo("Original file", file);
-  //     displayInfo("Compressed file", blob);
-  //   },
-  //   MIME_TYPE,
-  //   QUALITY
-  // );
 };
 
 function calculateSize(img, maxWidth, maxHeight) {
