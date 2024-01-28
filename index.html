@@ -21,45 +21,23 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <nav class="navbar">
-      <img class="logo" src="img/Group 24.png" alt="" />
-      <ul>
-        <a href="">Home</a>
-        <a href="">Company</a>
-        <a href="">Services</a>
-        <a href="">Industry</a>
-        <a href="">Testimonials</a>
-        <a href="">Portfolio</a>
-        <div class="new">
-          <a href="">Become a Partner</a>
-          <div class="newBox">NEW</div>
-        </div>
-        <a href="">Contact Us</a>
-        <ion-icon name="search-outline"></ion-icon>
-      </ul>
-    </nav>
-    <div class="hero">
-      <div class="content">
-        <div class="cont">
-          <h1>Image Compressor</h1>
-          <p>
-            Free tool for compressing your heavy image file into lighter one
-          </p>
-        </div>
-        <div class="cont2">
-          <a href="">Home</a>
-          <p>/</p>
-          <a href="">Image Compressor</a>
-        </div>
-      </div>
+
+    <div class="nav">
+
+      <nav>
+        <h1>
+          Image Compressor
+        </h1>
+        <a href="https://github.com/shivam907/image-compressor">
+          <img src="git.png" alt="">
+        </a>
+      </nav>
+
     </div>
+    <h2>Fast, Free and <p class="off">Offline</p> Compressor</h2>
     <div class="pdfCompressor">
-      <!-- <div id="dropContainer" style="border: 1px solid black; height: 25rem">
-        Drop Here
-      </div> -->
       <form id="dropFileForm">
         <input class="ok input" type="file" name="files[]" id="img-input" />
-
         <label
           for="fileInput"
           id="fileLabel"
@@ -69,36 +47,88 @@
           ondrop="overrideDefault(event);fileHoverEnd();
         addFiles(event);"
         >
-          <!-- <i class="fa fa-download fa-5x"></i> -->
-          <!-- <br /> -->
-          <span id="fileLabelText"> Choose a file or drag it here </span>
-          <!-- <br /> -->
+          <span id="fileLabelText"> 
+            <img src="./im.png" alt="">
+            <p>
+
+              Choose a file or drag it here
+            </p>
+           </span>
           <div class="convert op">
             <p>Converting</p>
             <div class="spinner rounded-circle"></div>
           </div>
-          <!-- <span id="uploadStatus"></span> -->
         </label>
-
-        <!-- <button class="uploadButton" onclick="uploadFiles(event)">
-          Compress
-        </button> -->
       </form>
-      <div id="root"></div>
-      <!-- <div id="root">
-        <p>Upload an image and see the result</p>
-        <input
-          id="img-input"
-          type="file"
-          accept="image/*"
-          style="display: block"
-        />
-      </div> -->
-      <!-- <input type="file" name="" id="input" />
 
-      <button class="files">Submit</button> -->
+      
+      <div id="root"></div>
     </div>
-    <!-- <div class="space"></div> -->
+    <div class="quality">
+      <p class="q1">Image Quality : </p>
+      <p class="q2">0.5</p>
+      <p id="qq" class="q4">(Recommended)</p>
+    </div>
+    <div class="range">
+      <div class="range-slider">
+        <input
+          type="range"
+          min="0"
+          max="1"
+          value="0.5"
+          id="range"
+          step="0.1"
+        />
+        <div class="sliderticks">
+          <span>0</span>
+          <span>0.1</span>
+          <span>0.2</span>
+          <span>0.3</span>
+          <span>0.4</span>
+          <span>0.5</span>
+          <span>0.6</span>
+          <span>0.7</span>
+          <span>0.8</span>
+          <span>0.9</span>
+          <span>1</span>
+        </div>
+      </div>
+  
+      <div class="value">0.5</div>
+    </div>
+    <div class="download">
+      <div class="down none">
+        <img class="dimg" src="./test.png" alt="">
+        <div class="ddw">
+          <h3 class="fnm">Image File name.png</h3>
+          <div class="compress">
+            <p class="cp1">20.8 kb</p>
+            <img src="./arrow.png" alt="" class="arrow">
+            <p class="cp2">1 kb</p>
+          </div>
+          <a class="link">Download</a>
+        </div>
+      </div>
+    </div>
     <script src="script.js"></script>
+    <script>
+      async function registerServiceWorker() {
+        if ("serviceWorker" in navigator) {
+          try {
+            const registration = await navigator.serviceWorker.register(
+              "sw.js"
+            );
+            console.log(
+              "Service Worker registered with scope:",
+              registration.scope
+            );
+          } catch (error) {
+            console.error("Service Worker registration failed:", error);
+          }
+        }
+      }
+
+      registerServiceWorker();
+    </script>
   </body>
 </html>
