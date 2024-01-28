@@ -26,6 +26,7 @@
         Image Compressor
       </h1>
     </nav>
+    <h2>Fast, Free and <p class="off">Offline</p> Compressor</h2>
     <div class="pdfCompressor">
       <form id="dropFileForm">
         <input class="ok input" type="file" name="files[]" id="img-input" />
@@ -40,7 +41,10 @@
         >
           <span id="fileLabelText"> 
             <img src="./im.png" alt="">
-            Choose a file or drag it here
+            <p>
+
+              Choose a file or drag it here
+            </p>
            </span>
           <div class="convert op">
             <p>Converting</p>
@@ -52,9 +56,13 @@
       
       <div id="root"></div>
     </div>
+    <div class="quality">
+      <p class="q1">Image Quality : </p>
+      <p class="q2">0.5</p>
+      <p id="qq" class="q4">(Recommended)</p>
+    </div>
     <div class="range">
       <div class="range-slider">
-  
         <input
           type="range"
           min="0"
@@ -79,6 +87,20 @@
       </div>
   
       <div class="value">0.5</div>
+    </div>
+    <div class="download">
+      <div class="down none">
+        <img class="dimg" src="./test.png" alt="">
+        <div class="ddw">
+          <h3 class="fnm">Image File name.png</h3>
+          <div class="compress">
+            <p class="cp1">20.8 kb</p>
+            <img src="./arrow.png" alt="" class="arrow">
+            <p class="cp2">1 kb</p>
+          </div>
+          <a class="link">Download</a>
+        </div>
+      </div>
     </div>
     <script src="script.js"></script>
     <script>
