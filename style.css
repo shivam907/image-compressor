@@ -308,16 +308,28 @@ Aesthetics
 input{
   z-index: 9 !important;
 }
-nav{
+.nav{
   width: 100vw;
   padding: 15px 100px;
+}
+nav{
+  width: 120rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #00000030;
+
+}
+nav img{
+  width: 40px;
+  opacity: 0.8;
 }
 h1{
   font-size: 20px;
   color: #4b4949;
   font-weight: 400;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #00000030;
   width: 100%;
 }
 
