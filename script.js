@@ -13,7 +13,6 @@ input.onchange = function (ev) {
   img.src = blobURL;
   img.onerror = function () {
     URL.revokeObjectURL(this.src);
-    // Handle the failure properly
     console.log("Cannot load image");
   };
   img.onload = function () {
@@ -31,29 +30,22 @@ input.onchange = function (ev) {
     xhr.onload = function () {
       let a = document.createElement("a");
       let im = document.createElement("img");
-      im.src=window.URL.createObjectURL(xhr.response)
-      // im=img
-      im.style.width=500
-      im.style.height=500
-      document.body.appendChild(im)
+      im.src = window.URL.createObjectURL(xhr.response);
+      im.style.width = 500;
+      im.style.height = 500;
+      document.body.appendChild(im);
       a.href = window.URL.createObjectURL(xhr.response);
       a.download = file.name;
-      a.innerText="Download"
+      a.innerText = "Download";
       console.log(a);
-      // a.style.display = "none";
       document.body.appendChild(a);
-      // a.click();
-      // a.remove();
     };
-    xhr.open("GET", canvasImage); // This is to download the canvas Image
+    xhr.open("GET", canvasImage);
     xhr.send();
-
     document.querySelector(".convert").classList.add("op");
-    // document.getElementById("root").append(canvas);
     canvas.toBlob(
       (blob) => {
-        console.log(blob)
-        // Handle the compressed image. es. upload or save in local state
+        console.log(blob);
         displayInfo("Original file", file);
         displayInfo("Compressed file", blob);
       },
@@ -66,8 +58,6 @@ input.onchange = function (ev) {
 function calculateSize(img, maxWidth, maxHeight) {
   let width = img.width;
   let height = img.height;
-
-  // calculate the width and height, constraining the proportions
   if (width > height) {
     if (width > maxWidth) {
       height = Math.round((height * maxWidth) / width);
@@ -82,8 +72,6 @@ function calculateSize(img, maxWidth, maxHeight) {
   return [width, height];
 }
 
-// Utility functions for demo purpose
-
 function displayInfo(label, file) {
   const p = document.createElement("p");
   p.innerText = `${label} - ${readableBytes(file.size)}`;
@@ -93,7 +81,6 @@ function displayInfo(label, file) {
 function readableBytes(bytes) {
   const i = Math.floor(Math.log(bytes) / Math.log(1024)),
     sizes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
-
   return (bytes / Math.pow(1024, i)).toFixed(2) + " " + sizes[i];
 }
 const sliderEl = document.querySelector("#range");
@@ -101,10 +88,11 @@ const sliderValue = document.querySelector(".value");
 
 sliderEl.addEventListener("input", (event) => {
   const tempSliderValue = event.target.value;
-
   sliderValue.textContent = tempSliderValue;
-
   const progress = (tempSliderValue / sliderEl.max) * 100;
-
-  sliderEl.style.background = `linear-gradient(to right, #f50 ${progress}%, #ccc ${progress}%)`;
+  sliderEl.style.background = `linear-gradient(to right, #333 ${progress}%, #ccc ${progress}%)`;
 });
+const tempSliderValue = 0.5;
+sliderValue.textContent = tempSliderValue;
+const progress = (tempSliderValue / sliderEl.max) * 100;
+sliderEl.style.background = `linear-gradient(to right, #333 ${progress}%, #ccc ${progress}%)`;
