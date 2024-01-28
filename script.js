@@ -9,17 +9,6 @@ input.onchange = function (ev) {
   const file = ev.target.files[0]; // get the file
   const blobURL = URL.createObjectURL(file);
   console.log(blobURL);
-    // var downloadLink = document.createElement("a");
-    // downloadLink.target = "_blank";
-    // downloadLink.download = file.name;
-    // downloadLink.href = blobURL;
-
-    // // append the anchor to document body
-    // document.body.append(downloadLink);
-
-    // // fire a click event on the anchor
-    // downloadLink.click();
-
   const img = new Image();
   img.src = blobURL;
   img.onerror = function () {
@@ -107,3 +96,15 @@ function readableBytes(bytes) {
 
   return (bytes / Math.pow(1024, i)).toFixed(2) + " " + sizes[i];
 }
+const sliderEl = document.querySelector("#range");
+const sliderValue = document.querySelector(".value");
+
+sliderEl.addEventListener("input", (event) => {
+  const tempSliderValue = event.target.value;
+
+  sliderValue.textContent = tempSliderValue;
+
+  const progress = (tempSliderValue / sliderEl.max) * 100;
+
+  sliderEl.style.background = `linear-gradient(to right, #f50 ${progress}%, #ccc ${progress}%)`;
+});

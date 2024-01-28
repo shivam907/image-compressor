@@ -23,12 +23,8 @@
   <body>
 
     <div class="pdfCompressor">
-      <!-- <div id="dropContainer" style="border: 1px solid black; height: 25rem">
-        Drop Here
-      </div> -->
       <form id="dropFileForm">
         <input class="ok input" type="file" name="files[]" id="img-input" />
-
         <label
           for="fileInput"
           id="fileLabel"
@@ -38,36 +34,39 @@
           ondrop="overrideDefault(event);fileHoverEnd();
         addFiles(event);"
         >
-          <!-- <i class="fa fa-download fa-5x"></i> -->
-          <!-- <br /> -->
           <span id="fileLabelText"> Choose a file or drag it here </span>
-          <!-- <br /> -->
           <div class="convert op">
             <p>Converting</p>
             <div class="spinner rounded-circle"></div>
           </div>
-          <!-- <span id="uploadStatus"></span> -->
         </label>
-
-        <!-- <button class="uploadButton" onclick="uploadFiles(event)">
-          Compress
-        </button> -->
       </form>
-      <div id="root"></div>
-      <!-- <div id="root">
-        <p>Upload an image and see the result</p>
-        <input
-          id="img-input"
-          type="file"
-          accept="image/*"
-          style="display: block"
-        />
-      </div> -->
-      <!-- <input type="file" name="" id="input" />
 
-      <button class="files">Submit</button> -->
+      
+      <div id="root"></div>
     </div>
-    <!-- <div class="space"></div> -->
+    <div class="range">
+      <div class="range-slider">
+  
+        <input
+          type="range"
+          min="0"
+          max="100"
+          value="0"
+          id="range"
+          step="25"
+        />
+        <div class="sliderticks">
+          <span>0</span>
+          <span>25</span>
+          <span>50</span>
+          <span>75</span>
+          <span>100</span>
+        </div>
+      </div>
+  
+      <div class="value">0</div>
+    </div>
     <script src="script.js"></script>
     <script>
       async function registerServiceWorker() {
