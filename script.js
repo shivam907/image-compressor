@@ -94,7 +94,9 @@ const sliderValue = document.querySelector(".value");
 
 sliderEl.addEventListener("input", (event) => {
   const tempSliderValue = event.target.value;
-  document.querySelector(".q2").textContent = tempSliderValue;
+  document.querySelectorAll(".q2").forEach(i=>{
+    i.textContent = tempSliderValue;
+  })
   if (tempSliderValue >= 0.9 || tempSliderValue <= 0.1) {
     const e = document.querySelector("#qq");
     e.classList.remove("q4");
